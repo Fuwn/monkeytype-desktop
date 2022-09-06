@@ -1,0 +1,33 @@
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[package]
+name = "monkeytype"
+version = "0.0.0"
+authors = ["Fuwn <contact@fuwn.me>"]
+edition = "2021"
+rust-version = "1.57"
+description = "Monkeytype, but for desktop"
+readme = "../README.md"
+homepage = "https://github.com/Fuwn/monkeytype-desktop"
+repository = "https://github.com/Fuwn/monkeytype-desktop"
+license = "GPL-3.0-only"
+keywords = ["monkeytype", "typing", "typing-game", "typing-test", "typing-speed-test", "typing-speed"]
+
+# Slower builds, faster executables
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+
+[build-dependencies]
+tauri-build = { version = "1.0.0", features = [] }
+
+[dependencies]
+discord-rich-presence = "0.2.2"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+tauri = { version = "1.0.0", features = ["api-all"] }
+
+[features]
+default = [ "custom-protocol" ]
+custom-protocol = [ "tauri/custom-protocol" ]

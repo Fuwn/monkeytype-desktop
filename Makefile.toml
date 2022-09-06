@@ -1,0 +1,28 @@
+[tasks.fmt]
+args = ["fmt", "--manifest-path=src-tauri/Cargo.toml"]
+command = "cargo"
+toolchain = "nightly"
+workspace = false
+
+[tasks.check]
+args = ["check", "--all-features", "--manifest-path=src-tauri/Cargo.toml"]
+command = "cargo"
+workspace = false
+
+[tasks.clippy]
+args = ["clippy", "--all-features", "--manifest-path=src-tauri/Cargo.toml"]
+command = "cargo"
+workspace = false
+
+[tasks.checkf]
+dependencies = ["fmt", "check"]
+workspace = false
+
+[tasks.checkfc]
+dependencies = ["fmt", "check", "clippy"]
+workspace = false
+
+[tasks.run]
+args = ["run", "--manifest-path=src-tauri/Cargo.toml"]
+command = "cargo"
+workspace = false
